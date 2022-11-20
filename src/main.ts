@@ -1,19 +1,18 @@
-//import { AnalyticsService } from './app/shared/analytics.service';
-import { AppComponent } from './app/app.component';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 
-
+import { AppRoutingModule } from './app/app-routing.module';
+import { AppComponent } from './app/app.component';
+// import { AnalyticsService } from './app/shared/analytics.service';
 import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrapApplication(AppComponent,{
+bootstrapApplication(AppComponent, {
   providers: [
-    //AnalyticsService
-  ]
-}
-  
-  );
+    // AnalyticsService,
+    importProvidersFrom(AppRoutingModule)
+  ],
+});
